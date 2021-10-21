@@ -1,14 +1,12 @@
 package proyecto;
+
 import java.util.Objects;
 
 public class MagnitudDetalle implements IManejoBaseDatos {
 	private int id;
 	private String tipo;
 	private String descripcion;
-	private String distribucionAsumida;
-	private String evaluacionIncertidumbre;
-	private String metodoObservacion;
-	public double valor;
+	private ITipo info;
 
 	public MagnitudDetalle() {
 		// TODO Auto-generated constructor stub
@@ -38,41 +36,36 @@ public class MagnitudDetalle implements IManejoBaseDatos {
 		this.descripcion = descripcion;
 	}
 
-	public String getDistribucionAsumida() {
-		return distribucionAsumida;
+	public ITipo getInfo() {
+		return info;
 	}
 
-	public void setDistribucionAsumida(String distribucionAsumida) {
-		this.distribucionAsumida = distribucionAsumida;
-	}
-
-	public String getEvaluacionIncertidumbre() {
-		return evaluacionIncertidumbre;
-	}
-
-	public void setEvaluacionIncertidumbre(String evaluacionIncertidumbre) {
-		this.evaluacionIncertidumbre = evaluacionIncertidumbre;
-	}
-
-	public String getMetodoObservacion() {
-		return metodoObservacion;
-	}
-
-	public void setMetodoObservacion(String metodoObservacion) {
-		this.metodoObservacion = metodoObservacion;
-	}
-
-	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setInfo(ITipo info) {
+		this.info = info;
 	}
 
 	public void seleccionTipo(String t) {
 		// Se pondran como null los atributos que no tengan que ver con el tipo
 		// seleccionado
+		CreadorTipo creadorTipo;
+
+		creadorTipo = iniCreaTipo(t);
+
+		this.info = creadorTipo.crearTipo();
+	}
+
+	private CreadorTipo iniCreaTipo(String t) {
+		if (t.equals("Tipo A")) {
+			return new CreadorTipoA();
+		} else if (t.equals("Tipo A Resumido")) {
+			return new CreadorTipoAResumido();
+		} else if (t.equals("Tipo B")) {
+			return new CreadorTipoB();
+		} else if (t.equals("Constante")) {
+			return new CreadorTipoConstante();
+		} else {
+			return null;
+		}
 	}
 
 	public void seleccionEvaluacionIncertidumbre(String e) {
@@ -106,29 +99,6 @@ public class MagnitudDetalle implements IManejoBaseDatos {
 	public void eliminar(int id) {
 		// TODO Auto-generated method stub
 		// Se elimina el registro en la base de datos
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MagnitudDetalle other = (MagnitudDetalle) obj;
-		return Objects.equals(descripcion, other.descripcion)
-				&& Objects.equals(distribucionAsumida, other.distribucionAsumida)
-				&& Objects.equals(evaluacionIncertidumbre, other.evaluacionIncertidumbre) && id == other.id
-				&& Objects.equals(metodoObservacion, other.metodoObservacion) && Objects.equals(tipo, other.tipo)
-				&& Double.doubleToLongBits(valor) == Double.doubleToLongBits(other.valor);
-	}
-
-	@Override
-	public String toString() {
-		return "MagnitudDetalle [id=" + id + ", tipo=" + tipo + ", descripcion=" + descripcion
-				+ ", distribucionAsumida=" + distribucionAsumida + ", evaluacionIncertidumbre="
-				+ evaluacionIncertidumbre + ", metodoObservacion=" + metodoObservacion + ", valor=" + valor + "]";
 	}
 
 }
