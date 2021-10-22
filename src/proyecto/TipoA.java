@@ -2,7 +2,6 @@ package proyecto;
 
 public class TipoA implements ITipo {
 
-	private int id;
 	private String metodoObservacion;
 	private String evaluacionIncertidumbre;
 	private String distribucionAsumida;
@@ -11,25 +10,10 @@ public class TipoA implements ITipo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TipoA(int id, String metodoObservacion, String evaluacionIncertidumbre, String distribucionAsumida) {
-		this.id = id;
-		this.metodoObservacion = metodoObservacion;
-		this.evaluacionIncertidumbre = evaluacionIncertidumbre;
-		this.distribucionAsumida = distribucionAsumida;
-	}
-
 	public TipoA(String metodoObservacion, String evaluacionIncertidumbre, String distribucionAsumida) {
 		this.metodoObservacion = metodoObservacion;
 		this.evaluacionIncertidumbre = evaluacionIncertidumbre;
 		this.distribucionAsumida = distribucionAsumida;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getMetodoObservacion() {
@@ -67,8 +51,7 @@ public class TipoA implements ITipo {
 	@Override
 	public String[] getInfo() {
 		// TODO Auto-generated method stub
-		String[] datos = { getId() + "", getMetodoObservacion(), getEvaluacionIncertidumbre(),
-				getDistribucionAsumida() };
+		String[] datos = { getMetodoObservacion(), getEvaluacionIncertidumbre(), getDistribucionAsumida() };
 		return datos;
 	}
 

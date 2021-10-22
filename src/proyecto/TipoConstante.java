@@ -2,28 +2,14 @@ package proyecto;
 
 public class TipoConstante implements ITipo {
 
-	private int id;
 	private double valor;
 
 	public TipoConstante() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TipoConstante(int id, double valor) {
-		this.id = id;
-		this.valor = valor;
-	}
-
 	public TipoConstante(double valor) {
 		this.valor = valor;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public double getValor() {
@@ -43,7 +29,7 @@ public class TipoConstante implements ITipo {
 	@Override
 	public String[] getInfo() {
 		// TODO Auto-generated method stub
-		String[] datos = { getId() + "", getValor() + "" };
+		String[] datos = { getValor() + "" };
 		return datos;
 	}
 
