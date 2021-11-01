@@ -1,6 +1,6 @@
 package proyecto;
 
-public abstract class CreadorTipo {
+public abstract class CreadorTipoMagnitud {
 	
 	public abstract ITipoMagnitud crearTipo();
 

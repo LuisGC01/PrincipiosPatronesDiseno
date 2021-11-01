@@ -47,14 +47,14 @@ public class MagnitudDetalle implements IManejoBaseDatos {
 	public void seleccionTipo(String t) {
 		// Se pondran como null los atributos que no tengan que ver con el tipo
 		// seleccionado
-		CreadorTipo creadorTipo;
+		CreadorTipoMagnitud creadorTipo;
 
 		creadorTipo = iniCreaTipo(t);
 
 		this.info = creadorTipo.crearTipo();
 	}
 
-	private CreadorTipo iniCreaTipo(String t) {
+	private CreadorTipoMagnitud iniCreaTipo(String t) {
 		if (t.equals("Tipo A")) {
 			return new CreadorTipoA();
 		} else if (t.equals("Tipo A Resumido")) {

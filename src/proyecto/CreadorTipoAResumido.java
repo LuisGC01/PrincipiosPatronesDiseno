@@ -1,6 +1,6 @@
 package proyecto;
 
-public class CreadorTipoAResumido extends CreadorTipo {
+public class CreadorTipoAResumido extends CreadorTipoMagnitud {
 
 	@Override
 	public ITipoMagnitud crearTipo() {
