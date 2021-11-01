@@ -1,6 +1,6 @@
 package proyecto;
 
-public class TipoAResumido implements ITipo {
+public class TipoAResumido implements ITipoMagnitud {
 
 	private String evaluacionIncertidumbre;
 	private String distribucionAsumida;

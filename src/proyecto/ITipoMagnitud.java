@@ -1,6 +1,6 @@
 package proyecto;
 
-public interface ITipo {
+public interface ITipoMagnitud {
 	
 	public abstract void setInfo(String [] datos);
 	public abstract String [] getInfo();

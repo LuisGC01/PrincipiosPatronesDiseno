@@ -1,6 +1,6 @@
 package proyecto;
 
-public class TipoConstante implements ITipo {
+public class TipoConstante implements ITipoMagnitud {
 
 	private double valor;
 

@@ -1,6 +1,6 @@
 package proyecto;
 
-public class TipoB implements ITipo {
+public class TipoB implements ITipoMagnitud {
 
 	private String distribucionAsumida;
 

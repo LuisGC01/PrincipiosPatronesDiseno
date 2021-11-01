@@ -6,7 +6,7 @@ public class MagnitudDetalle implements IManejoBaseDatos {
 	private int id;
 	private String tipo;
 	private String descripcion;
-	private ITipo info;
+	private ITipoMagnitud info;
 
 	public MagnitudDetalle() {
 		// TODO Auto-generated constructor stub
@@ -36,11 +36,11 @@ public class MagnitudDetalle implements IManejoBaseDatos {
 		this.descripcion = descripcion;
 	}
 
-	public ITipo getInfo() {
+	public ITipoMagnitud getInfo() {
 		return info;
 	}
 
-	public void setInfo(ITipo info) {
+	public void setInfo(ITipoMagnitud info) {
 		this.info = info;
 	}
 
