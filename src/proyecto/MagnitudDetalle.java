@@ -51,7 +51,9 @@ public class MagnitudDetalle implements IManejoBaseDatos {
 
 		creadorTipo = iniCreaTipo(t);
 
-		this.info = creadorTipo.crearTipoMagnitud();
+		if(creadorTipo != null) {
+			this.info = creadorTipo.crearTipoMagnitud();
+		}
 	}
 
 	private CreadorTipoMagnitud iniCreaTipo(String t) {
