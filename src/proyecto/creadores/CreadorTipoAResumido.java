@@ -1,4 +1,6 @@
-package proyecto;
+package proyecto.creadores;
+
+import proyecto.concretos.TipoAResumido;
 
 public class CreadorTipoAResumido extends CreadorTipoMagnitud {
 

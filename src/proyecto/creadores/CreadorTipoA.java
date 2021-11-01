@@ -1,4 +1,6 @@
-package proyecto;
+package proyecto.creadores;
+
+import proyecto.concretos.TipoA;
 
 public class CreadorTipoA extends CreadorTipoMagnitud {
 

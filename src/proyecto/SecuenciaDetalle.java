@@ -1,25 +1,34 @@
 package proyecto;
+
 import java.util.Objects;
+
+import proyecto.creadores.CreadorPuntoControl;
+import proyecto.creadores.CreadorPuntoDialogo;
+import proyecto.creadores.CreadorPuntoSecuenciaDIrecta;
+import proyecto.creadores.CreadorPuntoSecuenciaIndirecta;
+import proyecto.creadores.CreadorTipoPunto;
+import proyecto.creadores.ITipoPunto;
 
 public class SecuenciaDetalle implements IManejoBaseDatos {
 	private int id;
 	private int numeroPuntoSecuencia;
 	private char tipoPunto;
 	private String descripcionPunto;
-	private String valor;
-	private String barridoPrincipal;
-	private String barridoSecundario;
-	private int numeroMediciones;
-	private String instrucciones;
-	private String comentario;
 	private ArregloMedicion arreglo;
-	private String dialogoTxt;
-	private String dialogoEntrada;
-	private String dialogoValidacion;
-	private String dialogoMagnitud;
+	private ITipoPunto punto;
 
 	public SecuenciaDetalle() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public SecuenciaDetalle(int id, int numeroPuntoSecuencia, char tipoPunto, String descripcionPunto,
+			ArregloMedicion arreglo, ITipoPunto punto) {
+		this.id = id;
+		this.numeroPuntoSecuencia = numeroPuntoSecuencia;
+		this.tipoPunto = tipoPunto;
+		this.descripcionPunto = descripcionPunto;
+		this.arreglo = arreglo;
+		this.punto = punto;
 	}
 
 	public int getId() {
@@ -54,54 +63,6 @@ public class SecuenciaDetalle implements IManejoBaseDatos {
 		this.descripcionPunto = descripcionPunto;
 	}
 
-	public String getValor() {
-		return valor;
-	}
-
-	public void setValor(String valor) {
-		this.valor = valor;
-	}
-
-	public String getBarridoPrincipal() {
-		return barridoPrincipal;
-	}
-
-	public void setBarridoPrincipal(String barridoPrincipal) {
-		this.barridoPrincipal = barridoPrincipal;
-	}
-
-	public String getBarridoSecundario() {
-		return barridoSecundario;
-	}
-
-	public void setBarridoSecundario(String barridoSecundario) {
-		this.barridoSecundario = barridoSecundario;
-	}
-
-	public int getNumeroMediciones() {
-		return numeroMediciones;
-	}
-
-	public void setNumeroMediciones(int numeroMediciones) {
-		this.numeroMediciones = numeroMediciones;
-	}
-
-	public String getInstrucciones() {
-		return instrucciones;
-	}
-
-	public void setInstrucciones(String instrucciones) {
-		this.instrucciones = instrucciones;
-	}
-
-	public String getComentario() {
-		return comentario;
-	}
-
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
-	}
-
 	public ArregloMedicion getArreglo() {
 		return arreglo;
 	}
@@ -110,36 +71,33 @@ public class SecuenciaDetalle implements IManejoBaseDatos {
 		this.arreglo = arreglo;
 	}
 
-	public String getDialogoTxt() {
-		return dialogoTxt;
+	public ITipoPunto getPunto() {
+		return punto;
 	}
 
-	public void setDialogoTxt(String dialogoTxt) {
-		this.dialogoTxt = dialogoTxt;
+	public void setPunto(ITipoPunto punto) {
+		this.punto = punto;
 	}
 
-	public String getDialogoEntrada() {
-		return dialogoEntrada;
+	public void iniDetallePunto() {
+		CreadorTipoPunto creadorTipoPunto = iniCreaTipo();
+		if (creadorTipoPunto != null) {
+			punto = creadorTipoPunto.crearTipoPunto();
+		}
 	}
 
-	public void setDialogoEntrada(String dialogoEntrada) {
-		this.dialogoEntrada = dialogoEntrada;
-	}
-
-	public String getDialogoValidacion() {
-		return dialogoValidacion;
-	}
-
-	public void setDialogoValidacion(String dialogoValidacion) {
-		this.dialogoValidacion = dialogoValidacion;
-	}
-
-	public String getDialogoMagnitud() {
-		return dialogoMagnitud;
-	}
-
-	public void setDialogoMagnitud(String dialogoMagnitud) {
-		this.dialogoMagnitud = dialogoMagnitud;
+	private CreadorTipoPunto iniCreaTipo() {
+		if (tipoPunto == 'D') {
+			return new CreadorPuntoDialogo();
+		} else if (tipoPunto == 'C') {
+			return new CreadorPuntoControl();
+		} else if (tipoPunto == 'S') {
+			return new CreadorPuntoSecuenciaDIrecta();
+		} else if (tipoPunto == 'I') {
+			return new CreadorPuntoSecuenciaIndirecta();
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -175,27 +133,14 @@ public class SecuenciaDetalle implements IManejoBaseDatos {
 		if (getClass() != obj.getClass())
 			return false;
 		SecuenciaDetalle other = (SecuenciaDetalle) obj;
-		return Objects.equals(arreglo, other.arreglo) && Objects.equals(barridoPrincipal, other.barridoPrincipal)
-				&& Objects.equals(barridoSecundario, other.barridoSecundario)
-				&& Objects.equals(comentario, other.comentario)
-				&& Objects.equals(descripcionPunto, other.descripcionPunto)
-				&& Objects.equals(dialogoEntrada, other.dialogoEntrada)
-				&& Objects.equals(dialogoMagnitud, other.dialogoMagnitud)
-				&& Objects.equals(dialogoTxt, other.dialogoTxt)
-				&& Objects.equals(dialogoValidacion, other.dialogoValidacion) && id == other.id
-				&& Objects.equals(instrucciones, other.instrucciones) && numeroMediciones == other.numeroMediciones
-				&& numeroPuntoSecuencia == other.numeroPuntoSecuencia && tipoPunto == other.tipoPunto
-				&& Objects.equals(valor, other.valor);
+		return Objects.equals(arreglo, other.arreglo) && Objects.equals(descripcionPunto, other.descripcionPunto)
+				&& id == other.id && numeroPuntoSecuencia == other.numeroPuntoSecuencia && tipoPunto == other.tipoPunto;
 	}
 
 	@Override
 	public String toString() {
 		return "SecuenciaDetalle [id=" + id + ", numeroPuntoSecuencia=" + numeroPuntoSecuencia + ", tipoPunto="
-				+ tipoPunto + ", descripcionPunto=" + descripcionPunto + ", valor=" + valor + ", barridoPrincipal="
-				+ barridoPrincipal + ", barridoSecundario=" + barridoSecundario + ", numeroMediciones="
-				+ numeroMediciones + ", instrucciones=" + instrucciones + ", comentario=" + comentario + ", arreglo="
-				+ arreglo + ", dialogoTxt=" + dialogoTxt + ", dialogoEntrada=" + dialogoEntrada + ", dialogoValidacion="
-				+ dialogoValidacion + ", dialogoMagnitud=" + dialogoMagnitud + "]";
+				+ tipoPunto + ", descripcionPunto=" + descripcionPunto + ", valor=" + ", arreglo=" + arreglo + "]";
 	}
 
 }

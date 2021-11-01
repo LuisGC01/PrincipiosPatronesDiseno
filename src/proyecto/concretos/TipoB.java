@@ -1,4 +1,6 @@
-package proyecto;
+package proyecto.concretos;
+
+import proyecto.creadores.ITipoMagnitud;
 
 public class TipoB implements ITipoMagnitud {
 

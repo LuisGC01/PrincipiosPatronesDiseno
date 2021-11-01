@@ -2,6 +2,13 @@ package proyecto;
 
 import java.util.Objects;
 
+import proyecto.creadores.CreadorTipoA;
+import proyecto.creadores.CreadorTipoAResumido;
+import proyecto.creadores.CreadorTipoB;
+import proyecto.creadores.CreadorTipoConstante;
+import proyecto.creadores.CreadorTipoMagnitud;
+import proyecto.creadores.ITipoMagnitud;
+
 public class MagnitudDetalle implements IManejoBaseDatos {
 	private int id;
 	private String tipo;

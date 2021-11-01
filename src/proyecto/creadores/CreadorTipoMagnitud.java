@@ -1,4 +1,4 @@
-package proyecto;
+package proyecto.creadores;
 
 public abstract class CreadorTipoMagnitud {
 	
