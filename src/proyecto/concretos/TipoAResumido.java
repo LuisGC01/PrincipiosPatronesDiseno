@@ -1,5 +1,7 @@
 package proyecto.concretos;
 
+import java.util.Objects;
+
 import proyecto.creadores.ITipoMagnitud;
 
 public class TipoAResumido implements ITipoMagnitud {
@@ -44,6 +46,30 @@ public class TipoAResumido implements ITipoMagnitud {
 		// TODO Auto-generated method stub
 		String[] datos = { getEvaluacionIncertidumbre(), getDistribucionAsumida() };
 		return datos;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(distribucionAsumida, evaluacionIncertidumbre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TipoAResumido other = (TipoAResumido) obj;
+		return Objects.equals(distribucionAsumida, other.distribucionAsumida)
+				&& Objects.equals(evaluacionIncertidumbre, other.evaluacionIncertidumbre);
+	}
+
+	@Override
+	public String toString() {
+		return "TipoAResumido [evaluacionIncertidumbre=" + evaluacionIncertidumbre + ", distribucionAsumida="
+				+ distribucionAsumida + "]";
 	}
 
 }

@@ -1,4 +1,5 @@
 package proyecto;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -15,6 +16,19 @@ public class ArregloMedicion implements IManejoBaseDatos {
 
 	public ArregloMedicion() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public ArregloMedicion(int id, String tituloArregloMedicion, Date fechaAlta, Usuario usarioDefine, String version,
+			String descripcion, String formatoCalCert, Imagen imagen, ModeloMatematico modelo) {
+		this.id = id;
+		this.tituloArregloMedicion = tituloArregloMedicion;
+		this.fechaAlta = fechaAlta;
+		this.usarioDefine = usarioDefine;
+		this.version = version;
+		this.descripcion = descripcion;
+		this.formatoCalCert = formatoCalCert;
+		this.imagen = imagen;
+		this.modelo = modelo;
 	}
 
 	public int getId() {
@@ -111,6 +125,12 @@ public class ArregloMedicion implements IManejoBaseDatos {
 	public void eliminar(int id) {
 		// TODO Auto-generated method stub
 		// Se elimina el registro en la base de datos
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, fechaAlta, formatoCalCert, id, imagen, modelo, tituloArregloMedicion,
+				usarioDefine, version);
 	}
 
 	@Override

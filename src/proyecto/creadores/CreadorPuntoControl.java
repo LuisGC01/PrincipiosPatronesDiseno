@@ -10,4 +10,9 @@ public class CreadorPuntoControl extends CreadorTipoPunto {
 		return new PuntoControl();
 	}
 
+	@Override
+	public String toString() {
+		return "CreadorPuntoControl []";
+	}
+
 }

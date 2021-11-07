@@ -125,6 +125,11 @@ public class SecuenciaDetalle implements IManejoBaseDatos {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(arreglo, descripcionPunto, id, numeroPuntoSecuencia, punto, tipoPunto);
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -134,13 +139,15 @@ public class SecuenciaDetalle implements IManejoBaseDatos {
 			return false;
 		SecuenciaDetalle other = (SecuenciaDetalle) obj;
 		return Objects.equals(arreglo, other.arreglo) && Objects.equals(descripcionPunto, other.descripcionPunto)
-				&& id == other.id && numeroPuntoSecuencia == other.numeroPuntoSecuencia && tipoPunto == other.tipoPunto;
+				&& id == other.id && numeroPuntoSecuencia == other.numeroPuntoSecuencia
+				&& Objects.equals(punto, other.punto) && tipoPunto == other.tipoPunto;
 	}
 
 	@Override
 	public String toString() {
 		return "SecuenciaDetalle [id=" + id + ", numeroPuntoSecuencia=" + numeroPuntoSecuencia + ", tipoPunto="
-				+ tipoPunto + ", descripcionPunto=" + descripcionPunto + ", valor=" + ", arreglo=" + arreglo + "]";
+				+ tipoPunto + ", descripcionPunto=" + descripcionPunto + ", arreglo=" + arreglo + ", punto=" + punto
+				+ "]";
 	}
 
 }

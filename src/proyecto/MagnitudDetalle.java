@@ -19,6 +19,13 @@ public class MagnitudDetalle implements IManejoBaseDatos {
 		// TODO Auto-generated constructor stub
 	}
 
+	public MagnitudDetalle(int id, String tipo, String descripcion, ITipoMagnitud info) {
+		this.id = id;
+		this.tipo = tipo;
+		this.descripcion = descripcion;
+		this.info = info;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -105,6 +112,29 @@ public class MagnitudDetalle implements IManejoBaseDatos {
 	public void eliminar(int id) {
 		// TODO Auto-generated method stub
 		// Se elimina el registro en la base de datos
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, id, info, tipo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MagnitudDetalle other = (MagnitudDetalle) obj;
+		return Objects.equals(descripcion, other.descripcion) && id == other.id && Objects.equals(info, other.info)
+				&& Objects.equals(tipo, other.tipo);
+	}
+
+	@Override
+	public String toString() {
+		return "MagnitudDetalle [id=" + id + ", tipo=" + tipo + ", descripcion=" + descripcion + ", info=" + info + "]";
 	}
 
 }

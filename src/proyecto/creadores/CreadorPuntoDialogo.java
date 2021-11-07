@@ -10,4 +10,9 @@ public class CreadorPuntoDialogo extends CreadorTipoPunto {
 		return new PuntoDialogo();
 	}
 
+	@Override
+	public String toString() {
+		return "CreadorPuntoDialogo []";
+	}
+
 }

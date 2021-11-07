@@ -1,5 +1,7 @@
 package proyecto.concretos;
 
+import java.util.Objects;
+
 import proyecto.creadores.ITipoMagnitud;
 
 public class TipoConstante implements ITipoMagnitud {
@@ -33,6 +35,28 @@ public class TipoConstante implements ITipoMagnitud {
 		// TODO Auto-generated method stub
 		String[] datos = { getValor() + "" };
 		return datos;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(valor);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TipoConstante other = (TipoConstante) obj;
+		return Double.doubleToLongBits(valor) == Double.doubleToLongBits(other.valor);
+	}
+
+	@Override
+	public String toString() {
+		return "TipoConstante [valor=" + valor + "]";
 	}
 
 }

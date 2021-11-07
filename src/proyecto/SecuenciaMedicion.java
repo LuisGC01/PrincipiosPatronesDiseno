@@ -1,4 +1,5 @@
 package proyecto;
+
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
@@ -13,6 +14,16 @@ public class SecuenciaMedicion implements IManejoBaseDatos {
 
 	public SecuenciaMedicion() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public SecuenciaMedicion(int id, String titulo, String descripcion, Usuario usarioDefine, Date fechaDefinicion,
+			SecuenciaDetalle[] detalles) {
+		this.id = id;
+		this.titulo = titulo;
+		this.descripcion = descripcion;
+		this.usarioDefine = usarioDefine;
+		this.fechaDefinicion = fechaDefinicion;
+		this.detalles = detalles;
 	}
 
 	public int getId() {
@@ -108,6 +119,15 @@ public class SecuenciaMedicion implements IManejoBaseDatos {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(detalles);
+		result = prime * result + Objects.hash(descripcion, fechaDefinicion, id, titulo, usarioDefine);
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -117,14 +137,15 @@ public class SecuenciaMedicion implements IManejoBaseDatos {
 			return false;
 		SecuenciaMedicion other = (SecuenciaMedicion) obj;
 		return Objects.equals(descripcion, other.descripcion) && Arrays.equals(detalles, other.detalles)
-				&& Objects.equals(fechaDefinicion, other.fechaDefinicion) && Objects.equals(titulo, other.titulo)
-				&& Objects.equals(usarioDefine, other.usarioDefine);
+				&& Objects.equals(fechaDefinicion, other.fechaDefinicion) && id == other.id
+				&& Objects.equals(titulo, other.titulo) && Objects.equals(usarioDefine, other.usarioDefine);
 	}
 
 	@Override
 	public String toString() {
-		return "SecuenciaMedicion [titulo=" + titulo + ", descripcion=" + descripcion + ", usarioDefine=" + usarioDefine
-				+ ", fechaDefinicion=" + fechaDefinicion + ", detalles=" + Arrays.toString(detalles) + "]";
+		return "SecuenciaMedicion [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", usarioDefine="
+				+ usarioDefine + ", fechaDefinicion=" + fechaDefinicion + ", detalles=" + Arrays.toString(detalles)
+				+ "]";
 	}
 
 }

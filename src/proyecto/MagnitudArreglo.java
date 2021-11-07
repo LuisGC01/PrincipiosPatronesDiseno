@@ -16,6 +16,19 @@ public class MagnitudArreglo implements IManejoBaseDatos {
 		// TODO Auto-generated constructor stub
 	}
 
+	public MagnitudArreglo(int id, String magnitud, String unidad, String definicion, boolean capturar, boolean repetir,
+			String asociado, MagnitudDetalle magnitudDetalle, Imagen imagen) {
+		this.id = id;
+		this.magnitud = magnitud;
+		this.unidad = unidad;
+		this.definicion = definicion;
+		this.capturar = capturar;
+		this.repetir = repetir;
+		this.asociado = asociado;
+		this.magnitudDetalle = magnitudDetalle;
+		this.imagen = imagen;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -120,6 +133,11 @@ public class MagnitudArreglo implements IManejoBaseDatos {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(asociado, capturar, definicion, id, imagen, magnitud, magnitudDetalle, repetir, unidad);
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -141,5 +159,7 @@ public class MagnitudArreglo implements IManejoBaseDatos {
 				+ definicion + ", capturar=" + capturar + ", repetir=" + repetir + ", asociado=" + asociado
 				+ ", magnitudDetalle=" + magnitudDetalle + ", imagen=" + imagen + "]";
 	}
+
+
 
 }

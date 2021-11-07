@@ -1,5 +1,7 @@
 package proyecto.concretos;
 
+import java.util.Objects;
+
 import proyecto.MagnitudArreglo;
 import proyecto.creadores.ITipoPunto;
 
@@ -57,7 +59,8 @@ public class PuntoDialogo implements ITipoPunto {
 	public void setInfo(String[] datos) {
 		// TODO Auto-generated method stub
 		setDialogoTxt(datos[0]);
-		setDialogoEntrada(datos[1]); ;
+		setDialogoEntrada(datos[1]);
+		;
 		setDialogoValidacion(datos[2]);
 		setMagnitudArreglo(new MagnitudArreglo());
 		magnitudArreglo.cargar(Integer.parseInt(datos[3]));
@@ -69,6 +72,31 @@ public class PuntoDialogo implements ITipoPunto {
 		String[] datos = { getDialogoTxt(), getDialogoEntrada(), getDialogoValidacion(),
 				getMagnitudArreglo().getId() + "" };
 		return datos;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dialogoEntrada, dialogoTxt, dialogoValidacion, magnitudArreglo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PuntoDialogo other = (PuntoDialogo) obj;
+		return Objects.equals(dialogoEntrada, other.dialogoEntrada) && Objects.equals(dialogoTxt, other.dialogoTxt)
+				&& Objects.equals(dialogoValidacion, other.dialogoValidacion)
+				&& Objects.equals(magnitudArreglo, other.magnitudArreglo);
+	}
+
+	@Override
+	public String toString() {
+		return "PuntoDialogo [dialogoTxt=" + dialogoTxt + ", dialogoEntrada=" + dialogoEntrada + ", dialogoValidacion="
+				+ dialogoValidacion + ", magnitudArreglo=" + magnitudArreglo + "]";
 	}
 
 }

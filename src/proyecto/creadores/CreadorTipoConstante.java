@@ -10,4 +10,9 @@ public class CreadorTipoConstante extends CreadorTipoMagnitud {
 		return new TipoConstante();
 	}
 
+	@Override
+	public String toString() {
+		return "CreadorTipoConstante []";
+	}
+
 }

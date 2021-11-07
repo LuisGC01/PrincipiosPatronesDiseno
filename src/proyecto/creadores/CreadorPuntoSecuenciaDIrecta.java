@@ -10,4 +10,9 @@ public class CreadorPuntoSecuenciaDIrecta extends CreadorTipoPunto {
 		return new PuntoSecuenciaDIrecta();
 	}
 
+	@Override
+	public String toString() {
+		return "CreadorPuntoSecuenciaDIrecta []";
+	}
+
 }

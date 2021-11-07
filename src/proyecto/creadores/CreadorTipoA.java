@@ -10,4 +10,9 @@ public class CreadorTipoA extends CreadorTipoMagnitud {
 		return new TipoA();
 	}
 
+	@Override
+	public String toString() {
+		return "CreadorTipoA []";
+	}
+
 }

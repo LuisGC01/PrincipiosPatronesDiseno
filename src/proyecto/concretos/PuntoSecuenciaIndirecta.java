@@ -1,5 +1,7 @@
 package proyecto.concretos;
 
+import java.util.Objects;
+
 import proyecto.creadores.ITipoPunto;
 
 public class PuntoSecuenciaIndirecta implements ITipoPunto {
@@ -62,6 +64,30 @@ public class PuntoSecuenciaIndirecta implements ITipoPunto {
 		// TODO Auto-generated method stub
 		String[] datos = { "h" };
 		return null;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(barridoPrincipal, comentario, instrucciones, valor);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PuntoSecuenciaIndirecta other = (PuntoSecuenciaIndirecta) obj;
+		return Objects.equals(barridoPrincipal, other.barridoPrincipal) && Objects.equals(comentario, other.comentario)
+				&& Objects.equals(instrucciones, other.instrucciones) && Objects.equals(valor, other.valor);
+	}
+
+	@Override
+	public String toString() {
+		return "PuntoSecuenciaIndirecta [valor=" + valor + ", barridoPrincipal=" + barridoPrincipal + ", instrucciones="
+				+ instrucciones + ", comentario=" + comentario + "]";
 	}
 
 }

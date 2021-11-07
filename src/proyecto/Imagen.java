@@ -1,4 +1,5 @@
 package proyecto;
+
 import java.util.Objects;
 
 public class Imagen implements IManejoBaseDatos {
@@ -11,6 +12,13 @@ public class Imagen implements IManejoBaseDatos {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Imagen(int id, String imagen, String leyenda, String descripcion) {
+		this.id = id;
+		this.imagen = imagen;
+		this.leyenda = leyenda;
+		this.descripcion = descripcion;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -18,7 +26,6 @@ public class Imagen implements IManejoBaseDatos {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getImagen() {
 		return imagen;
@@ -69,6 +76,11 @@ public class Imagen implements IManejoBaseDatos {
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, id, imagen, leyenda);
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -77,13 +89,14 @@ public class Imagen implements IManejoBaseDatos {
 		if (getClass() != obj.getClass())
 			return false;
 		Imagen other = (Imagen) obj;
-		return Objects.equals(descripcion, other.descripcion) && Objects.equals(imagen, other.imagen)
+		return Objects.equals(descripcion, other.descripcion) && id == other.id && Objects.equals(imagen, other.imagen)
 				&& Objects.equals(leyenda, other.leyenda);
 	}
 
 	@Override
 	public String toString() {
-		return "Imagen [imagen=" + imagen + ", leyenda=" + leyenda + ", descripcion=" + descripcion + "]";
+		return "Imagen [id=" + id + ", imagen=" + imagen + ", leyenda=" + leyenda + ", descripcion=" + descripcion
+				+ "]";
 	}
 
 }

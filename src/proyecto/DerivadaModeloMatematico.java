@@ -1,4 +1,5 @@
 package proyecto;
+
 import java.util.Objects;
 
 public class DerivadaModeloMatematico implements IManejoBaseDatos {
@@ -8,6 +9,12 @@ public class DerivadaModeloMatematico implements IManejoBaseDatos {
 
 	public DerivadaModeloMatematico() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public DerivadaModeloMatematico(int id, String derivadaParcial, String derivadaRespectoA) {
+		this.id = id;
+		this.derivadaParcial = derivadaParcial;
+		this.derivadaRespectoA = derivadaRespectoA;
 	}
 
 	public int getId() {
@@ -56,6 +63,11 @@ public class DerivadaModeloMatematico implements IManejoBaseDatos {
 	public void eliminar(int id) {
 		// TODO Auto-generated method stub
 		// Se elimina el registro en la base de datos
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(derivadaParcial, derivadaRespectoA, id);
 	}
 
 	@Override

@@ -1,4 +1,5 @@
 package proyecto;
+
 import java.util.Objects;
 
 public class Usuario implements IManejoBaseDatos {
@@ -13,6 +14,18 @@ public class Usuario implements IManejoBaseDatos {
 
 	public Usuario() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Usuario(int id, String nombreUsuario, String password, String puesto, String nombre, String apellidoP,
+			String apellidoM, boolean activo) {
+		this.id = id;
+		this.nombreUsuario = nombreUsuario;
+		this.password = password;
+		this.puesto = puesto;
+		this.nombre = nombre;
+		this.apellidoP = apellidoP;
+		this.apellidoM = apellidoM;
+		this.activo = activo;
 	}
 
 	public int getId() {
@@ -101,6 +114,11 @@ public class Usuario implements IManejoBaseDatos {
 	public void eliminar(int id) {
 		// TODO Auto-generated method stub
 		// Se elimina el registro en la base de datos
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(activo, apellidoM, apellidoP, id, nombre, nombreUsuario, password, puesto);
 	}
 
 	@Override

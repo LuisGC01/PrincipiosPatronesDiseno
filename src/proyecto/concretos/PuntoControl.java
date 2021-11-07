@@ -1,5 +1,7 @@
 package proyecto.concretos;
 
+import java.util.Objects;
+
 import proyecto.creadores.ITipoPunto;
 
 public class PuntoControl implements ITipoPunto {
@@ -78,6 +80,32 @@ public class PuntoControl implements ITipoPunto {
 		String[] datos = { getValor(), getBarridoPrincipal(), getBarridoSecundario(), getInstrucciones(),
 				getComentario() };
 		return datos;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(barridoPrincipal, barridoSecundario, comentario, instrucciones, valor);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PuntoControl other = (PuntoControl) obj;
+		return Objects.equals(barridoPrincipal, other.barridoPrincipal)
+				&& Objects.equals(barridoSecundario, other.barridoSecundario)
+				&& Objects.equals(comentario, other.comentario) && Objects.equals(instrucciones, other.instrucciones)
+				&& Objects.equals(valor, other.valor);
+	}
+
+	@Override
+	public String toString() {
+		return "PuntoControl [valor=" + valor + ", barridoPrincipal=" + barridoPrincipal + ", barridoSecundario="
+				+ barridoSecundario + ", instrucciones=" + instrucciones + ", comentario=" + comentario + "]";
 	}
 
 }
